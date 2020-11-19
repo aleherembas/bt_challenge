@@ -9,7 +9,7 @@ class VerifyOTPController extends Controller
 {
     public function verify(OTPRequest $request){
 
-        //dd(auth()->user()->otp()); // returns null
+        dd(auth()->user()); // returns null
         if(request('otp') == auth()->user()->otp()){
             auth()->user()->update(['isVerified' => true]);
             return redirect('/home');

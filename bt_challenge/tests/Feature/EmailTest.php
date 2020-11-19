@@ -12,13 +12,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EmailTest extends TestCase
 {
+    use DatabaseMigrations;
+
     /**
      * A basic feature test example.
      *
      * @return void
      */
-
-    use DatabaseMigrations;
 
     /**
      * @test
@@ -51,7 +51,8 @@ class EmailTest extends TestCase
 
         $user = factory(User::class)->create();
         $res = $this->post('/login', ['email' => $user->email, 'password' => 'secret']);
-        $this->assertNotNull($user->otp());
+        //dd($user);
+        $this->assertNotNull($user->otp()); //null
     }
 
 }

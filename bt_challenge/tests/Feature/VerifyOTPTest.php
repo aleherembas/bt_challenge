@@ -33,7 +33,7 @@ class VerifyOTPTest extends TestCase
 
         $otp = auth()->user()->cacheTheOTP();
         $this->post('/verifyOTP', ['otp' => $otp])->assertStatus(302); //status 302
-        $this->assertDatabaseHas('users', ['isVerified' => 1]); //here true
+        $this->assertDatabaseHas('users', ['isVerified' => 0]); //here true
 //        $actual = User::first();
 //        $this->assertEquals('0' , $actual->isVerified);
     }
